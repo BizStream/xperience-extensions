@@ -1,0 +1,13 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Create a property to easily reference the root of the `src` folder -->
+    <SourceDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))</SourceDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;</TargetFrameworks>
+    <TargetXperienceVersion>13.0.5</TargetXperienceVersion>
+  </PropertyGroup>
+
+</Project>

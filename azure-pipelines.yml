@@ -1,0 +1,70 @@
+name: $(Date:yyyy-MM-dd)$(Rev:_r)
+
+pr:
+  branches:
+    include:
+      - develop
+      - feature/*
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+steps:
+  - task: DotNetCoreCLI@2
+    displayName: restore dependencies
+    inputs:
+      command: restore
+      projects: src/**/*.csproj
+
+  - task: DotNetCoreCLI@2
+    displayName: build projects
+    inputs:
+      projects: src/**/*.csproj
+      arguments: --no-restore
+
+  - task: DotNetCoreCLI@2
+    displayName: test netcoreapp3.1
+    inputs:
+      command: test
+      projects: src/**/test/**/BizStream.*.Tests.csproj
+      arguments: -f netcoreapp3.1 --collect:"XPlat Code coverage" --no-build
+      testRunTitle: netcoreapp3.1
+
+  - task: DotNetCoreCLI@2
+    displayName: test net48
+    inputs:
+      command: test
+      projects: src/**/test/**/BizStream.*.Tests.csproj
+      arguments: -f net48 --collect:"XPlat Code coverage" --no-build
+      testRunTitle: net48
+
+  - task: reportgenerator@4
+    displayName: generate code coverage
+    inputs:
+      reports: $(Agent.TempDirectory)/**/coverage.cobertura.xml
+      targetdir: $(Agent.TempDirectory)/CoverageResults
+
+  - task: PublishCodeCoverageResults@1
+    displayName: publish code coverage
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: $(Agent.TempDirectory)/CoverageResults/Cobertura.xml
+      failIfCoverageEmpty: true
+
+  - task: DotNetCoreCLI@2
+    displayName: create packages
+    inputs:
+      command: pack
+      packagesToPack: src/**/*.csproj;!src/**/*.Tests.csproj
+      nobuild: true
+      includesymbols: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: publish artifact
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: bzs-xperience-extensions
+    condition: succeededOrFailed()
