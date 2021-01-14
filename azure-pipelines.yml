@@ -30,6 +30,25 @@ steps:
       projects: src/**/*.csproj
       arguments: --no-restore
 
+  - task: PowerShell@2
+    displayName: 'ensure test db file permissions'
+    inputs:
+      targetType: 'inline'
+      script: |
+        $path = "${env:BUILD_SOURCESDIRECTORY}\TestDatabases"
+        if( -Not ( Test-Path -Path $path ) ) {
+          $d = [System.IO.Directory]::CreateDirectory( $path )
+        }
+
+        $ar = New-Object System.Security.AccessControl.FileSystemAccessRule( "Everyone", "FullControl", "ContainerInherit, ObjectInherit", "None", "Allow" )
+        
+        $acl = Get-Acl $path
+        $acl.AddAccessRule($ar)
+
+        Set-Acl $path -AclObject $acl
+      failOnStderr: true
+      showWarnings: true
+
   - task: DotNetCoreCLI@2
     displayName: test netcoreapp3.1
     inputs:
@@ -71,5 +90,5 @@ steps:
     displayName: publish artifact
     inputs:
       PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: bzs-xperience-extensions
+      ArtifactName: xperience-extensions
     condition: succeededOrFailed()
