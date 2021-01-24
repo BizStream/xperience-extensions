@@ -12,21 +12,25 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
     public static partial class CMSCacheDependencyExtensions
     {
 
-        private static CMSCacheDependency EnsureCacheKeys( this CMSCacheDependency dependency, params string[] keysToAdd )
+        /// <summary> Ensures the given <paramref name="keys"/> are specified on the <paramref name="dependency"/>. </summary>
+        /// <param name="dependency"> The <see cref="CMSCacheDependency"/>. </param>
+        /// <param name="keys"> The CacheKeys to ensure. </param>
+        /// <returns> The configured <paramref name="dependency"/>. </returns>
+        public static CMSCacheDependency EnsureCacheKeys( this CMSCacheDependency dependency, params string[] keys )
         {
             ThrowIfDependencyIsNull( dependency );
 
-            var keys = new HashSet<string>(
+            var keySet = new HashSet<string>(
                 dependency?.CacheKeys ?? Enumerable.Empty<string>(),
                 StringComparer.InvariantCultureIgnoreCase
             );
 
-            foreach( var keyToAdd in keysToAdd )
+            foreach( var key in keys )
             {
-                keys.Add( keyToAdd );
+                keySet.Add( key );
             }
 
-            dependency.CacheKeys = keys.ToArray();
+            dependency.CacheKeys = keySet.ToArray();
             return dependency;
         }
 

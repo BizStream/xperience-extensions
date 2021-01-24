@@ -40,7 +40,7 @@
       "packages/": true
     },
     "razor.format.enable": true,
-    "razor.trace": "Messages",
+    "razor.trace": "Messages"
   },
   "tasks": {
     "version": "2.0.0",
@@ -60,7 +60,8 @@
   },
   "extensions": {
     "recommendations": [
-      "formulahendry.dotnet-test-explorer",
+      "editorconfig.editorconfig",
+      "fernandoescolar.vscode-solution-explorer",
       "ms-dotnettools.csharp",
       "streetsidesoftware.code-spell-checker"
     ]
