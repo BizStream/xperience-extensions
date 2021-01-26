@@ -3,6 +3,7 @@
   <ItemGroup>
     <PackageReference Include="BizStream.NET.Sdk" Version="1.0.0" PrivateAssests="all" />
     <PackageReference Include="Kentico.Xperience.Libraries" Version="$(TargetXperienceVersion)" />
+    <PackageReference Include="Kentico.Xperience.AspNetCore.WebApp" Version="$(TargetXperienceVersion)" Condition=" '$(IncludeXperienceWebReferences)' == 'true' " />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(IsTestProject)' == 'true' ">

@@ -8,6 +8,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;</TargetFrameworks>
     <TargetXperienceVersion>13.0.5</TargetXperienceVersion>
+    <IncludeXperienceWebReferences>false</IncludeXperienceWebReferences>
   </PropertyGroup>
 
 </Project>
