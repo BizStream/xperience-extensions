@@ -84,7 +84,7 @@ steps:
       command: pack
       packagesToPack: src/**/*.csproj;!src/**/*.Tests.csproj
       nobuild: true
-      includesymbols: true
+      includesymbols: false
 
   - task: PublishBuildArtifacts@1
     displayName: publish artifact
