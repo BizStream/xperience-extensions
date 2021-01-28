@@ -11,4 +11,10 @@
     <IncludeXperienceWebReferences>false</IncludeXperienceWebReferences>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryUrl>https://github.com/BizStream/xperience-extensions.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
 </Project>

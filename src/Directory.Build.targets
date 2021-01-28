@@ -11,4 +11,11 @@
     <PackageReference Include="Kentico.Xperience.Libraries.Tests" Version="$(TargetXperienceVersion)" />
   </ItemGroup>
 
+  <Target Name="SetRepositoryGitMetadata" BeforeTargets="GenerateNuspec;Pack" DependsOnTargets="GitInfo">
+    <PropertyGroup>
+      <RepositoryBranch>$(GitBranch)</RepositoryBranch>
+      <RepositoryCommit>$(GitCommit)</RepositoryCommit>
+    </PropertyGroup>
+  </Target>
+
 </Project>
