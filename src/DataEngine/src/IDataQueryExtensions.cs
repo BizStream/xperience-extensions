@@ -19,6 +19,31 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         private const string CteWithKeyword = ";WITH";
         #endregion
 
+        /// <summary> Asynchronously executes the given <paramref name="query"/>, returning the first result. </summary>
+        /// <param name="query"> The query to execute. </param>
+        /// <remarks> This method calls <see cref="IDataQuerySettings{TQuery}.TopN(int)"/> on the given <paramref name="query"/> to ensure only a single record is returned from the DB. </remarks>
+        public static Task<IDataRecord> FirstOrDefaultAsync<TQuery, TObject>( this IDataQuery<TQuery> query, CancellationToken cancellationToken = default )
+            where TQuery : IDataQuery<TQuery>, new()
+        {
+            ThrowIfQueryIsNull( query );
+            return query.GetTypedQuery()
+                .TopN( 1 )
+                .ToListAsync( cancellationToken )
+                .ContinueWith( task => task.Result?.FirstOrDefault(), cancellationToken );
+        }
+
+        /// <summary> Asynchronously executes the given <paramref name="query"/>, returning the first result. </summary>
+        /// <param name="query"> The query to execute. </param>
+        /// <returns> The typed <typeparamref name="TObject"/>s. </returns>
+        public static Task<IDataRecord> FirstOrDefaultAsync<TQuery, TObject>( this IDataQuery<TQuery> query, Func<IDataRecord, bool> predicate, CancellationToken cancellationToken = default )
+            where TQuery : IDataQuery<TQuery>, new()
+        {
+            ThrowIfQueryIsNull( query );
+            return query.GetTypedQuery()
+                .ToListAsync( cancellationToken )
+                .ContinueWith( ( task, state ) => task.Result?.FirstOrDefault( ( Func<IDataRecord, bool> )state ), predicate, cancellationToken );
+        }
+
         /// <summary> Extends the functionality of <see cref="IDataQuery{TQuery}.WithSource(DataSet)"/> by generating a <c>SELECT FROM VALUES</c> <see cref="QuerySourceTable"/> from the given <paramref name="data"/>. </summary>
         /// <param name="query"> The query to be configured. </param>
         /// <param name="data"> The data to source <paramref name="query"/> with. </param>
