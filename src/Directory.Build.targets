@@ -1,0 +1,21 @@
+<Project>
+
+  <ItemGroup>
+    <PackageReference Include="BizStream.NET.Sdk" Version="1.0.1" PrivateAssests="all" />
+    <PackageReference Include="Kentico.Xperience.Libraries" Version="$(TargetXperienceVersion)" />
+    <PackageReference Include="Kentico.Xperience.AspNetCore.WebApp" Version="$(TargetXperienceVersion)" Condition=" '$(IncludeXperienceWebReferences)' == 'true' " />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(IsTestProject)' == 'true' ">
+    <PackageReference Include="BizStream.NET.Tests.Sdk" Version="1.0.1" />
+    <PackageReference Include="Kentico.Xperience.Libraries.Tests" Version="$(TargetXperienceVersion)" />
+  </ItemGroup>
+
+  <Target Name="SetRepositoryGitMetadata" BeforeTargets="GenerateNuspec;Pack" DependsOnTargets="GitInfo">
+    <PropertyGroup>
+      <RepositoryBranch>$(GitBranch)</RepositoryBranch>
+      <RepositoryCommit>$(GitCommit)</RepositoryCommit>
+    </PropertyGroup>
+  </Target>
+
+</Project>

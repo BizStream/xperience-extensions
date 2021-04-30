@@ -1,0 +1,69 @@
+{
+  "folders": [{ "name": "{ Xperience Extensions }", "path": "." }],
+  "settings": {
+    "cSpell.words": ["CTE", "Kentico", "Xperience", "ctes"],
+    "cSpell.ignorePaths": [
+      "**/package-lock.json",
+      "**/node_modules/**",
+      "**/vscode-extension/**",
+      "**/.git/objects/**",
+      ".vscode",
+      ".vscode-insiders",
+      "*.code-workspace",
+
+      "azure-pipelines.yml"
+    ],
+    "csharp.referencesCodeLens.enabled": false,
+    "editor.codeLens": false,
+    "editor.tabSize": 4,
+    "javascript.validate.enable": false,
+    "omnisharp.autoStart": true,
+    "omnisharp.defaultLaunchSolution": "xperience-extensions.sln",
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+
+      "**/*.csproj.user": true,
+      "**/.vs/": true,
+      "**/bin/": true,
+      "**/node_modules/": true,
+      "**/obj/": true,
+      "**/TestDatabases/": true,
+
+      "CMS/": true,
+      "Lib/": true,
+      "packages/": true
+    },
+    "razor.format.enable": true,
+    "razor.trace": "Messages"
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "args": ["build", "/property:GenerateFullPaths=true"],
+        "problemMatcher": "$msCompile",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "editorconfig.editorconfig",
+      "fernandoescolar.vscode-solution-explorer",
+      "ms-dotnettools.csharp",
+      "streetsidesoftware.code-spell-checker"
+    ]
+  }
+}
