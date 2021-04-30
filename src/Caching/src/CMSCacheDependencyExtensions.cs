@@ -51,6 +51,40 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
             return EnsureCacheKeys( dependency, $"{objectType}|byname|{codeName}" );
         }
 
+        /// <summary> Configure the <see cref="CMSCacheDependency"/> with a dependency on an object of type <typeparamref name="TInfo"/>, identified by the given <paramref name="codeName"/>. </summary>
+        /// <typeparam name="TInfo"> The type of Kentico Object to configure the dependency with. </typeparam>
+        /// <param name="dependency"> The <see cref="CMSCacheDependency"/> to be configured. </param>
+        /// <param name="objectID"> The value of the <see cref="BaseInfo.ObjectID"/> for an instance of a Kentico object of type <typeparamref name="TInfo"/>. </param>
+        /// <returns> The configured <see cref="CMSCacheDependency"/>. </returns>
+        /// <remarks> This method expects the type <typeparamref name="TInfo"/> to define a <c>OBJECT_TYPE</c> constant (resolved via reflection). </remarks>
+        public static CMSCacheDependency OnObject<TInfo>( this CMSCacheDependency dependency, int objectID )
+            where TInfo : AbstractInfo<TInfo>, new()
+        {
+            ThrowIfDependencyIsNull( dependency );
+
+            var objectType = typeof( TInfo ).GetObjectTypeValue();
+            ThrowIfObjectTypeIsNull( objectType );
+
+            return EnsureCacheKeys( dependency, $"{objectType}|byid|{objectID}" );
+        }
+
+        /// <summary> Configure the <see cref="CMSCacheDependency"/> with a dependency on an object of type <typeparamref name="TInfo"/>, identified by the given <paramref name="codeName"/>. </summary>
+        /// <typeparam name="TInfo"> The type of Kentico Object to configure the dependency with. </typeparam>
+        /// <param name="dependency"> The <see cref="CMSCacheDependency"/> to be configured. </param>
+        /// <param name="objectGuid"> The value of the <see cref="BaseInfo.ObjectGUID"/> for an instance of a Kentico object of type <typeparamref name="TInfo"/>. </param>
+        /// <returns> The configured <see cref="CMSCacheDependency"/>. </returns>
+        /// <remarks> This method expects the type <typeparamref name="TInfo"/> to define a <c>OBJECT_TYPE</c> constant (resolved via reflection). </remarks>
+        public static CMSCacheDependency OnObject<TInfo>( this CMSCacheDependency dependency, Guid objectGuid )
+            where TInfo : AbstractInfo<TInfo>, new()
+        {
+            ThrowIfDependencyIsNull( dependency );
+
+            var objectType = typeof( TInfo ).GetObjectTypeValue();
+            ThrowIfObjectTypeIsNull( objectType );
+
+            return EnsureCacheKeys( dependency, $"{objectType}|byguid|{objectGuid}" );
+        }
+
         /// <summary> Configure the <see cref="CMSCacheDependency"/> with a dependency on any (all) objects of type <typeparamref name="TInfo"/>. </summary>
         /// <typeparam name="TInfo"> The type of Kentico Object to configure the dependency with. </typeparam>
         /// <param name="dependency"> The <see cref="CMSCacheDependency"/> to be configured. </param>

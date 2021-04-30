@@ -1,10 +1,10 @@
+using System;
 using CMS.Helpers;
 using CMS.Taxonomy;
 
 namespace BizStream.Extensions.Kentico.Xperience.Caching
 {
 
-    /// <summary> Extensions to <see cref="CMSCacheDependency"/> to assist with fluently configuring dependency keys for <see cref="TagInfo"/>s. </summary>
     public static partial class CMSCacheDependencyExtensions
     {
 
@@ -14,6 +14,20 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
         /// <returns> The configured <see cref="CMSCacheDependency"/>. </returns>
         public static CMSCacheDependency OnTag( this CMSCacheDependency dependency, string tagName )
             => OnObject<TagInfo>( dependency, tagName );
+
+        /// <summary> Configure the <see cref="CMSCacheDependency"/> with a dependency on a <see cref="TagInfo"/> identified by the given <paramref name="tagName"/>. </summary>
+        /// <param name="dependency"> The <see cref="CMSCacheDependency"/> to be configured. </param>
+        /// <param name="tagID"> The <see cref="TagInfo.TagID"/> that identifies the <see cref="TagInfo"/> to configure the dependency with. </param>
+        /// <returns> The configured <see cref="CMSCacheDependency"/>. </returns>
+        public static CMSCacheDependency OnTag( this CMSCacheDependency dependency, int tagID )
+            => OnObject<TagInfo>( dependency, tagID );
+
+        /// <summary> Configure the <see cref="CMSCacheDependency"/> with a dependency on a <see cref="TagInfo"/> identified by the given <paramref name="tagName"/>. </summary>
+        /// <param name="dependency"> The <see cref="CMSCacheDependency"/> to be configured. </param>
+        /// <param name="tagGuid"> The <see cref="TagInfo.TagGUID"/> that identifies the <see cref="TagInfo"/> to configure the dependency with. </param>
+        /// <returns> The configured <see cref="CMSCacheDependency"/>. </returns>
+        public static CMSCacheDependency OnTag( this CMSCacheDependency dependency, Guid tagGuid )
+            => OnObject<TagInfo>( dependency, tagGuid );
 
         /// <summary> Configure the <see cref="CMSCacheDependency"/> with a dependency on the <see cref="TagInfo"/>s identified by the given <paramref name="tagNames"/>. </summary>
         /// <param name="dependency"> The <see cref="CMSCacheDependency"/> to be configured. </param>
