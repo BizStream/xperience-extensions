@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;</TargetFrameworks>
-    <TargetXperienceVersion>[13.0.0,14.0.0)</TargetXperienceVersion>
+    <TargetXperienceVersion>[13.0.5,14.0.0)</TargetXperienceVersion>
     <IncludeXperienceWebReferences>false</IncludeXperienceWebReferences>
   </PropertyGroup>
 
