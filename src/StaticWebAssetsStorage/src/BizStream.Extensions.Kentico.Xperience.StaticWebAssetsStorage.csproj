@@ -3,7 +3,7 @@
     <PropertyGroup>
         <IncludeXperienceWebReferences>true</IncludeXperienceWebReferences>
         <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
-        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionPrefix>1.0.1</VersionPrefix>
     </PropertyGroup>
 
     <ItemGroup>
