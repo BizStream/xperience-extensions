@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31321.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31423.177
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CD5A0FAA-D1C7-4BF6-809D-7F6361DCB657}"
 EndProject
@@ -32,12 +32,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StaticWebAssetsStorage", "StaticWebAssetsStorage", "{B8A268E4-45A6-4C6D-96D3-17A2F7492431}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentico.Xperience.StaticWebAssetsStorage", "src\StaticWebAssetsStorage\src\BizStream.Extensions.Kentico.Xperience.StaticWebAssetsStorage.csproj", "{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueryFilters", "QueryFilters", "{DADADD78-153C-4807-BD95-C6C4AB886755}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentico.Xperience.QueryFilters", "src\QueryFilters\src\BizStream.Extensions.Kentico.Xperience.QueryFilters.csproj", "{FEA52390-3A2B-4E70-8714-5139DF524795}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentico.Xperience.QueryFilters.Tests", "src\QueryFilters\test\BizStream.Extensions.Kentico.Xperience.QueryFilters.Tests.csproj", "{A5BD22F1-302A-441A-855E-2B3331490489}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,30 +151,6 @@ Global
 		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|x64.Build.0 = Release|Any CPU
 		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|x86.ActiveCfg = Release|Any CPU
 		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|x86.Build.0 = Release|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Debug|x64.Build.0 = Debug|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Debug|x86.Build.0 = Debug|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Release|x64.ActiveCfg = Release|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Release|x64.Build.0 = Release|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Release|x86.ActiveCfg = Release|Any CPU
-		{FEA52390-3A2B-4E70-8714-5139DF524795}.Release|x86.Build.0 = Release|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Debug|x64.Build.0 = Debug|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Debug|x86.Build.0 = Debug|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Release|x64.ActiveCfg = Release|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Release|x64.Build.0 = Release|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Release|x86.ActiveCfg = Release|Any CPU
-		{A5BD22F1-302A-441A-855E-2B3331490489}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,9 +170,6 @@ Global
 		{5E737081-AA9A-429A-8199-4B5F7149A111} = {2AA05EBA-1F91-4564-A175-C5720D5EA4B4}
 		{B8A268E4-45A6-4C6D-96D3-17A2F7492431} = {CD5A0FAA-D1C7-4BF6-809D-7F6361DCB657}
 		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8} = {B8A268E4-45A6-4C6D-96D3-17A2F7492431}
-		{DADADD78-153C-4807-BD95-C6C4AB886755} = {CD5A0FAA-D1C7-4BF6-809D-7F6361DCB657}
-		{FEA52390-3A2B-4E70-8714-5139DF524795} = {DADADD78-153C-4807-BD95-C6C4AB886755}
-		{A5BD22F1-302A-441A-855E-2B3331490489} = {DADADD78-153C-4807-BD95-C6C4AB886755}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD8C2393-6375-450A-82CD-1BF088A43D3E}
