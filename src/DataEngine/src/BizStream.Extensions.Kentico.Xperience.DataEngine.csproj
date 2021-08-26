@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Description>Helpers and extension methods to assist with using Kentico EMS.</Description>
-        <VersionPrefix>1.0.1</VersionPrefix>
+        <Description>Helpers and extension methods to assist with using Kentico Xperience DataEngine APIs.</Description>
+        <VersionPrefix>1.0.2</VersionPrefix>
     </PropertyGroup>
 
 </Project>

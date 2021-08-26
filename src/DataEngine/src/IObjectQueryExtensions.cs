@@ -57,7 +57,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         /// <typeparam name="TQuery"> The type of <see cref="IObjectQuery"/> to execute. </typeparam>
         /// <typeparam name="TObject"> The type of <see cref="BaseInfo"/> object being queried. </typeparam>
         /// <returns> The typed <typeparamref name="TObject"/>s. </returns>
-        public static async Task<IEnumerable<TObject>> ToListAsync<TQuery, TObject>( this IObjectQuery<TQuery, TObject> query, CancellationToken cancellationToken = default )
+        public static async Task<List<TObject>> ToListAsync<TQuery, TObject>( this IObjectQuery<TQuery, TObject> query, CancellationToken cancellationToken = default )
             where TQuery : IObjectQuery<TQuery, TObject>
             where TObject : BaseInfo
         {
