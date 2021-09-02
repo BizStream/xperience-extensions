@@ -123,7 +123,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
 
         /// <summary> Asynchronously execute the given <paramref name="query"/>. </summary>
         /// <param name="query"> The query to execute. </param>
-        public static async Task<IEnumerable<IDataRecord>> ToListAsync<TQuery>( this IDataQuery<TQuery> query, CancellationToken cancellationToken = default )
+        public static async Task<List<IDataRecord>> ToListAsync<TQuery>( this IDataQuery<TQuery> query, CancellationToken cancellationToken = default )
             where TQuery : IDataQuery<TQuery>, new()
         {
             ThrowIfQueryIsNull( query );
