@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <Description>Helpers and extension methods to assist with using Kentico Xperience DataEngine APIs.</Description>
-        <VersionPrefix>1.0.3</VersionPrefix>
+        <VersionPrefix>1.1.0</VersionPrefix>
     </PropertyGroup>
 
 </Project>
