@@ -70,7 +70,7 @@ steps:
     inputs:
       command: test
       projects: src/**/test/**/BizStream.*.Tests.csproj
-      arguments: -f net48 --collect:"XPlat Code coverage" --no-build
+      arguments: -f net48 --collect:"XPlat Code coverage" --no-build --filter "FullyQualifiedName!~AspNetCore"
       testRunTitle: net48
 
   - task: reportgenerator@4

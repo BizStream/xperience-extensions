@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using BizStream.Kentico.Xperience.AspNetCore.Mvc.Testing;
 using CMS.Base;
 using CMS.CMSImportExport;
@@ -14,7 +13,7 @@ using NUnit.Framework;
 namespace BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Tests.Abstractions
 {
 
-    public class PageRetrieversTests<TStartup> : AutomatedTestsWithIsolatedWebApplication<TStartup>
+    public abstract class PageRetrieversTests<TStartup> : AutomatedTestsWithIsolatedWebApplication<TStartup>
         where TStartup : class
     {
 
@@ -23,7 +22,7 @@ namespace BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Tests
         #endregion
 
         [SetUp]
-        public async Task PageRetrieversTestsSetUp( )
+        public void PageRetrieversTestsSetUp( )
             => SeedData();
 
         protected override XperienceWebApplicationFactory<TStartup> CreateWebApplicationFactory( )
