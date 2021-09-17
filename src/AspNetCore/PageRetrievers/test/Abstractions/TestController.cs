@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Tests.Abstractions;
+﻿using BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Tests.Abstractions;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +12,7 @@ namespace BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Tests
     {
 
         [HttpGet( "" )]
-        public async Task<IActionResult> Index( )
+        public IActionResult Index( )
             => Content( "Hello, World!" );
 
         public IActionResult Test( [FromServices] IPageDataContextRetriever contextRetriever )

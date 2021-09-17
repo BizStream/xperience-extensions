@@ -101,7 +101,7 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
             return EnsureCacheKeys( dependency, $"{objectType}|all" );
         }
 
-        private static void ThrowIfDependencyIsNull( CMSCacheDependency dependency )
+        private static void ThrowIfDependencyIsNull( CMSCacheDependency? dependency )
         {
             if( dependency is null )
             {
@@ -109,7 +109,7 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
             }
         }
 
-        private static void ThrowIfObjectTypeIsNull( string objectType )
+        private static void ThrowIfObjectTypeIsNull( string? objectType )
         {
             if( string.IsNullOrWhiteSpace( objectType ) )
             {
@@ -117,7 +117,7 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
             }
         }
 
-        private static void ThrowIsSiteNameIsEmpty( string siteName )
+        private static void ThrowIsSiteNameIsEmpty( string? siteName )
         {
             if( string.IsNullOrWhiteSpace( siteName ) )
             {
