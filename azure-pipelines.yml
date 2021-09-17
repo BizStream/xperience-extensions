@@ -19,10 +19,10 @@ steps:
   - task: DotNetCoreCLI@2
     displayName: restore dependencies
     inputs:
-      command: 'restore'
-      projects: 'src/**/*.csproj'
-      feedsToUse: 'select'
-      vstsFeed: '4053202a-1650-47d7-804a-73158b8e55f7'
+      command: "restore"
+      projects: "src/**/*.csproj"
+      feedsToUse: "select"
+      vstsFeed: "4053202a-1650-47d7-804a-73158b8e55f7"
 
   - task: DotNetCoreCLI@2
     displayName: build projects
@@ -31,9 +31,9 @@ steps:
       arguments: --no-restore
 
   - task: PowerShell@2
-    displayName: 'ensure test db file permissions'
+    displayName: "ensure test db file permissions"
     inputs:
-      targetType: 'inline'
+      targetType: "inline"
       script: |
         $path = "${env:BUILD_SOURCESDIRECTORY}\TestDatabases"
         if( -Not ( Test-Path -Path $path ) ) {
@@ -41,13 +41,21 @@ steps:
         }
 
         $ar = New-Object System.Security.AccessControl.FileSystemAccessRule( "Everyone", "FullControl", "ContainerInherit, ObjectInherit", "None", "Allow" )
-        
+
         $acl = Get-Acl $path
         $acl.AddAccessRule($ar)
 
         Set-Acl $path -AclObject $acl
       failOnStderr: true
       showWarnings: true
+
+  - task: DotNetCoreCLI@2
+    displayName: test net5.0
+    inputs:
+      command: test
+      projects: src/**/test/**/BizStream.*.Tests.csproj
+      arguments: -f net5.0 --collect:"XPlat Code coverage" --no-build
+      testRunTitle: net5.0
 
   - task: DotNetCoreCLI@2
     displayName: test netcoreapp3.1

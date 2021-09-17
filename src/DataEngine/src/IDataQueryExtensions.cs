@@ -22,7 +22,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         /// <summary> Asynchronously executes the given <paramref name="query"/>, returning the first result. </summary>
         /// <param name="query"> The query to execute. </param>
         /// <remarks> This method calls <see cref="IDataQuerySettings{TQuery}.TopN(int)"/> on the given <paramref name="query"/> to ensure only a single record is returned from the DB. </remarks>
-        public static async Task<IDataRecord> FirstOrDefaultAsync<TQuery, TObject>( this IDataQuery<TQuery> query, CancellationToken cancellationToken = default )
+        public static async Task<IDataRecord?> FirstOrDefaultAsync<TQuery, TObject>( this IDataQuery<TQuery> query, CancellationToken cancellationToken = default )
             where TQuery : IDataQuery<TQuery>, new()
         {
             ThrowIfQueryIsNull( query );
@@ -36,7 +36,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         /// <summary> Asynchronously executes the given <paramref name="query"/>, returning the first result. </summary>
         /// <param name="query"> The query to execute. </param>
         /// <returns> The typed <typeparamref name="TObject"/>s. </returns>
-        public static async Task<IDataRecord> FirstOrDefaultAsync<TQuery, TObject>( this IDataQuery<TQuery> query, Func<IDataRecord, bool> predicate, CancellationToken cancellationToken = default )
+        public static async Task<IDataRecord?> FirstOrDefaultAsync<TQuery, TObject>( this IDataQuery<TQuery> query, Func<IDataRecord, bool> predicate, CancellationToken cancellationToken = default )
             where TQuery : IDataQuery<TQuery>, new()
         {
             ThrowIfQueryIsNull( query );
@@ -54,7 +54,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         public static TQuery From<TQuery>( this IDataQuery<TQuery> query, DataSet data, string alias = "Data" )
             where TQuery : IDataQuery<TQuery>, new()
         {
-            if( data == null )
+            if( data is null )
             {
                 throw new ArgumentNullException( nameof( data ) );
             }
@@ -101,7 +101,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
             ThrowIfQueryIsNull( query );
 
             var typedQuery = query.GetTypedQuery();
-            if( orderByColumns?.Any() != true )
+            if( orderByColumns?.Any() is not true )
             {
                 typedQuery.OrderByColumns = string.Empty;
             }
@@ -134,7 +134,13 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
                 .GetEnumerableResultAsync( cancellationToken: cancellationToken )
                 .ConfigureAwait( false );
 
-            return results?.ToList();
+            return results?.ToList() ?? new();
+        }
+
+        public static QuerySourceTable ToQuerySourceTable( this IDataQuery query, string? alias = null, bool expand = true, params string[]? hints )
+        {
+            ThrowIfQueryIsNull( query );
+            return new( $"( {query.GetFullQueryText( expand, false )} )", alias, hints );
         }
 
         /// <summary> Adds a CTE to the query. </summary>
@@ -143,7 +149,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         /// <param name="cteQuery"> The inner body of the CTE. </param>
         /// <param name="cteColumns"> The columns returned by the CTE. </param>
         /// <returns> The modified query. </returns>
-        public static TQuery WithCte<TQuery>( this IDataQuery<TQuery> query, string cteName, IDataQuery cteQuery, string[] cteColumns = null )
+        public static TQuery WithCte<TQuery>( this IDataQuery<TQuery> query, string cteName, IDataQuery cteQuery, IEnumerable<string>? cteColumns = null )
             where TQuery : IDataQuery<TQuery>, new()
         {
             ThrowIfQueryIsNull( query );
@@ -156,7 +162,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
             string cteExpression = string.Format(
                 CteTemplate,
                 cteName,
-                cteColumns?.Any() == true ? $"( {string.Join( ", ", cteColumns )} )" : string.Empty,
+                cteColumns?.Any() is true ? $"( {string.Join( ", ", cteColumns )} )" : string.Empty,
                 cteQuery.GetFullQueryText( true ) // TODO: copy, instead of expanding parameters
             );
 
@@ -194,9 +200,9 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
             return typedQuery;
         }
 
-        private static void ThrowIfQueryIsNull( IDataQuery query, string name = null )
+        private static void ThrowIfQueryIsNull( IDataQuery? query, string? name = null )
         {
-            if( query == null )
+            if( query is null )
             {
                 throw new ArgumentNullException( name ?? nameof( query ) );
             }

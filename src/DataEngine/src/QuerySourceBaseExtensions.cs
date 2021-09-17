@@ -19,7 +19,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         /// <param name="joinType"> The type of join to perform. </param>
         /// <returns> The modified <paramref name="source"/>. </returns>
         /// <exception cref="ArgumentException" />
-        public static TQuerySource Join<TQuerySource, TDataQuery>( this TQuerySource source, TDataQuery query, string leftColumn, string rightColumn, IWhereCondition condition = null, JoinTypeEnum joinType = JoinTypeEnum.Inner )
+        public static TQuerySource Join<TQuerySource, TDataQuery>( this TQuerySource source, TDataQuery query, string leftColumn, string rightColumn, IWhereCondition? condition = null, JoinTypeEnum joinType = JoinTypeEnum.Inner )
             where TQuerySource : QuerySourceBase<TQuerySource>, new()
             where TDataQuery : IDataQuery
             => source.Join( query, null, leftColumn, rightColumn, condition, joinType );
@@ -36,28 +36,22 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         /// <param name="joinType"> The type of join to perform. </param>
         /// <returns> The modified <paramref name="source"/>. </returns>
         /// /// <exception cref="ArgumentException" />
-        public static TQuerySource Join<TQuerySource, TDataQuery>( this TQuerySource source, TDataQuery query, string alias, string leftColumn, string rightColumn, IWhereCondition condition = null, JoinTypeEnum joinType = JoinTypeEnum.Inner )
+        public static TQuerySource Join<TQuerySource, TDataQuery>( this TQuerySource source, TDataQuery query, string? alias, string leftColumn, string rightColumn, IWhereCondition? condition = null, JoinTypeEnum joinType = JoinTypeEnum.Inner )
             where TQuerySource : QuerySourceBase<TQuerySource>, new()
             where TDataQuery : IDataQuery
         {
-            if( source == null )
+            if( source is null )
             {
                 throw new ArgumentNullException( nameof( source ) );
             }
 
-            if( query == null )
+            if( query is null )
             {
                 throw new ArgumentNullException( nameof( query ) );
             }
 
             query.ApplyParametersTo( source );
-            return source.Join(
-                new QuerySourceTable( $"( {query.GetFullQueryText( false, false )} )", alias ),
-                leftColumn,
-                rightColumn,
-                condition,
-                joinType
-            );
+            return source.Join( query.ToQuerySourceTable( alias, false ), leftColumn, rightColumn, condition, joinType );
         }
 
     }

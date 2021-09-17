@@ -18,11 +18,11 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         /// <typeparam name="TObject"> The type of <see cref="BaseInfo"/> object being queried. </typeparam>
         /// <returns> The typed <typeparamref name="TObject"/>s. </returns>
         /// <remarks> This method calls <see cref="IDataQuerySettings{TQuery}.TopN(int)"/> on the given <paramref name="query"/> to ensure only a single record is returned from the DB. </remarks>
-        public static async Task<TObject> FirstOrDefaultAsync<TQuery, TObject>( this IObjectQuery<TQuery, TObject> query, CancellationToken cancellationToken = default )
+        public static async Task<TObject?> FirstOrDefaultAsync<TQuery, TObject>( this IObjectQuery<TQuery, TObject> query, CancellationToken cancellationToken = default )
             where TQuery : IObjectQuery<TQuery, TObject>
             where TObject : BaseInfo
         {
-            if( query == null )
+            if( query is null )
             {
                 throw new ArgumentNullException( nameof( query ) );
             }
@@ -39,11 +39,11 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
         /// <typeparam name="TQuery"> The type of <see cref="IObjectQuery"/> to execute. </typeparam>
         /// <typeparam name="TObject"> The type of <see cref="BaseInfo"/> object being queried. </typeparam>
         /// <returns> The typed <typeparamref name="TObject"/>s. </returns>
-        public static async Task<TObject> FirstOrDefaultAsync<TQuery, TObject>( this IObjectQuery<TQuery, TObject> query, Func<TObject, bool> predicate, CancellationToken cancellationToken = default )
+        public static async Task<TObject?> FirstOrDefaultAsync<TQuery, TObject>( this IObjectQuery<TQuery, TObject> query, Func<TObject, bool> predicate, CancellationToken cancellationToken = default )
             where TQuery : IObjectQuery<TQuery, TObject>
             where TObject : BaseInfo
         {
-            if( query == null )
+            if( query is null )
             {
                 throw new ArgumentNullException( nameof( query ) );
             }
@@ -63,7 +63,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
             where TQuery : IObjectQuery<TQuery, TObject>
             where TObject : BaseInfo
         {
-            if( query == null )
+            if( query is null )
             {
                 throw new ArgumentNullException( nameof( query ) );
             }
@@ -72,7 +72,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DataEngine
                 .GetEnumerableTypedResultAsync( cancellationToken: cancellationToken )
                 .ConfigureAwait( false );
 
-            return results?.ToList();
+            return results?.ToList() ?? new();
         }
 
     }

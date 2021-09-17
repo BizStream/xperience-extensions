@@ -28,12 +28,12 @@ namespace BizStream.Extensions.Kentico.Xperience.DocumentEngine
         }
 
         /// <summary> Get the name of the Sql alias used for the query based on the type of query. </summary>
-        /// <see cref="Strings.DocumentQueryAliasName"/>
-        /// <see cref="Strings.MultiDocumentQueryAliasName"/>
+        /// <see cref="DocumentQueryStrings.DocumentQueryAliasName"/>
+        /// <see cref="DocumentQueryStrings.MultiDocumentQueryAliasName"/>
         public static string GetQueryAliasName( this IDocumentQuery query )
             => query is MultiDocumentQuery
-                ? Strings.MultiDocumentQueryAliasName
-                : Strings.DocumentQueryAliasName;
+                ? DocumentQueryStrings.MultiDocumentQueryAliasName
+                : DocumentQueryStrings.DocumentQueryAliasName;
 
     }
 
