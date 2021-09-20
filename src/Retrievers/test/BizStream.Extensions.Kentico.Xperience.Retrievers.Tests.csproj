@@ -3,7 +3,6 @@
     <PropertyGroup>
         <IsTestProject>true</IsTestProject>
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
-        <TargetFrameworks>netcoreapp3.1;net48;net5.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>

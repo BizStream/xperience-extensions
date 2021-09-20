@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Abstractions;
 using BizStream.Extensions.Kentico.Xperience.DataEngine;
 using BizStream.Extensions.Kentico.Xperience.DocumentEngine;
+using BizStream.Extensions.Kentico.Xperience.PageRetrievers.Abstractions;
 using CMS.DataEngine;
 using CMS.DocumentEngine;
 using Kentico.Content.Web.Mvc;
 
-namespace BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers
+namespace BizStream.Extensions.Kentico.Xperience.PageRetrievers
 {
 
     public class AncestorsPageRetriever : IAncestorsPageRetriever

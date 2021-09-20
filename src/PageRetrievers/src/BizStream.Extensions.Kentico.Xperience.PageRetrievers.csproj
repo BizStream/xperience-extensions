@@ -3,7 +3,6 @@
     <PropertyGroup>
         <Description>Services for common document querying methods based on Kentico Xperience's "PageRetriever" pattern.</Description>
         <IncludeXperienceWebReferences>true</IncludeXperienceWebReferences>
-        <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
         <VersionPrefix>0.0.1</VersionPrefix>
     </PropertyGroup>
 

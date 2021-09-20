@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using CMS.DocumentEngine;
 using Kentico.Content.Web.Mvc;
 
-namespace BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Abstractions
+namespace BizStream.Extensions.Kentico.Xperience.PageRetrievers.Abstractions
 {
 
-    public interface ISiblingsPageRetriever
+    public interface IDescendantsPageRetriever
     {
 
         Task<IEnumerable<TNode>> RetrieveAsync<TNode>(

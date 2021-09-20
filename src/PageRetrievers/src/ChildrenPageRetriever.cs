@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Abstractions;
 using BizStream.Extensions.Kentico.Xperience.DataEngine;
+using BizStream.Extensions.Kentico.Xperience.PageRetrievers.Abstractions;
 using CMS.DataEngine;
 using CMS.DocumentEngine;
 using Kentico.Content.Web.Mvc;
 
-namespace BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers
+namespace BizStream.Extensions.Kentico.Xperience.PageRetrievers
 {
 
     public class ChildrenPageRetriever : IChildrenPageRetriever
@@ -30,7 +30,8 @@ namespace BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers
             queryFilter?.Invoke( query.GetTypedQuery() );
         }
 
-        public async Task<IEnumerable<TNode>> RetrieveAsync<TNode>( int nodeID, Action<DocumentQuery<TNode>>? queryFilter = null, Action<IPageCacheBuilder<TNode>>? configureCache = null, CancellationToken cancellation = default ) where TNode : TreeNode, new()
+        public async Task<IEnumerable<TNode>> RetrieveAsync<TNode>( int nodeID, Action<DocumentQuery<TNode>>? queryFilter = null, Action<IPageCacheBuilder<TNode>>? configureCache = null, CancellationToken cancellation = default )
+            where TNode : TreeNode, new()
             => await pageRetriever.RetrieveAsync( query => ApplyChildrenQueryParameters( query, nodeID, queryFilter ), configureCache, cancellation );
 
         public async Task<IEnumerable<TreeNode>> RetrieveMultipleAsync( int nodeID, Action<MultiDocumentQuery>? queryFilter = null, Action<IPageCacheBuilder<TreeNode>>? configureCache = null, CancellationToken cancellation = default )

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers.Abstractions;
+using BizStream.Extensions.Kentico.Xperience.PageRetrievers.Abstractions;
 using CMS.DataEngine;
 using CMS.DocumentEngine;
 using Kentico.Content.Web.Mvc;
 
-namespace BizStream.Extensions.Kentico.Xperience.AspNetCore.PageRetrievers
+namespace BizStream.Extensions.Kentico.Xperience.PageRetrievers
 {
 
-    public class SiblingsPageRetriever : IAncestorsPageRetriever
+    public class SiblingsPageRetriever : ISiblingsPageRetriever
     {
         #region Fields
         private readonly IPageRetriever pageRetriever;
