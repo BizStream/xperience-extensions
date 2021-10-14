@@ -31,7 +31,7 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
         /// <param name="aliasPath"> The <see cref="TreeNode.NodeAliasPath"/> that identifies the <see cref="TreeNode"/> to configure the dependency with. </param>
         /// <param name="cultureCode"> The (optional) <see cref="TreeNode.DocumentCulture"/> that identifies the culture variant of the <see cref="TreeNode"/> to configure the dependency with. </param>
         /// <returns> The configured <see cref="CMSCacheDependency"/>. </returns>
-        public static CMSCacheDependency OnNode( this CMSCacheDependency dependency, string siteName, string aliasPath, string cultureCode = null )
+        public static CMSCacheDependency OnNode( this CMSCacheDependency dependency, string siteName, string aliasPath, string? cultureCode = null )
         {
             ThrowIfDependencyIsNull( dependency );
             ThrowIsSiteNameIsEmpty( siteName );
@@ -40,17 +40,17 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
                 throw new ArgumentNullException( nameof( aliasPath ) );
             }
 
-            var keysToAdd = new List<string>()
+            var keys = new List<string>()
             {
                  $"node|{siteName}|{aliasPath}"
             };
 
             if( !string.IsNullOrWhiteSpace( cultureCode ) )
             {
-                keysToAdd.Add( $"node|{siteName}|{aliasPath}|{cultureCode}" );
+                keys.Add( $"node|{siteName}|{aliasPath}|{cultureCode}" );
             }
 
-            return EnsureCacheKeys( dependency, keysToAdd.ToArray() );
+            return EnsureCacheKeys( dependency, keys.ToArray() );
         }
 
         /// <summary> Configure the <see cref="CMSCacheDependency"/> with a dependency on a <see cref="TreeNode"/> identified by the given <paramref name="nodeGuid"/>. </summary>
@@ -81,7 +81,7 @@ namespace BizStream.Extensions.Kentico.Xperience.Caching
         public static CMSCacheDependency OnNode( this CMSCacheDependency dependency, TreeNode node )
         {
             ThrowIfDependencyIsNull( dependency );
-            if( node == null )
+            if( node is null )
             {
                 throw new ArgumentNullException( nameof( node ) );
             }

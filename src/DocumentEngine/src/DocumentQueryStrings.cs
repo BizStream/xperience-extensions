@@ -4,7 +4,7 @@ namespace BizStream.Extensions.Kentico.Xperience.DocumentEngine
 {
 
     /// <summary> String Constants. </summary>
-    public static class Strings
+    public static class DocumentQueryStrings
     {
 
         /// <summary> The Sql alias for the select expression when querying documents using <see cref="DocumentQuery{TDocument}"/>. </summary>

@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Description>Helpers and extensions to assist with caching in a Kentico Enivornment.</Description>
-        <VersionPrefix>1.1.0</VersionPrefix>
+        <Description>Services for common document querying methods based on Kentico Xperience's "PageRetriever" pattern.</Description>
+        <IncludeXperienceWebReferences>true</IncludeXperienceWebReferences>
+        <VersionPrefix>0.0.1</VersionPrefix>
     </PropertyGroup>
 
     <ItemGroup>

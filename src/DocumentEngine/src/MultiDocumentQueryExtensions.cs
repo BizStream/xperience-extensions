@@ -69,14 +69,14 @@ namespace BizStream.Extensions.Kentico.Xperience.DocumentEngine
         /// <typeparam name="TNode"> The type of <see cref="TreeNode"/> to be included in the query. </typeparam>
         /// <param name="query"> The query to modify. </param>
         /// <param name="parameters"> An <see cref="Action"/> that configures the inner <see cref="DocumentQuery"/> to retrieve nodes of type, <typeparamref name="TNode"/>. </param>
-        public static MultiDocumentQuery Type<TNode>( this MultiDocumentQuery query, Action<DocumentQuery> parameters = null )
+        public static MultiDocumentQuery Type<TNode>( this MultiDocumentQuery query, Action<DocumentQuery>? parameters = null )
             where TNode : TreeNode, new()
         {
             ThrowIfQueryIsNull( query );
             return query.Type( typeof( TNode ).GetNodeClassNameValue(), parameters );
         }
 
-        private static void ThrowIfQueryIsNull( MultiDocumentQuery query, string name = null )
+        private static void ThrowIfQueryIsNull( MultiDocumentQuery query, string? name = null )
         {
             if( query == null )
             {

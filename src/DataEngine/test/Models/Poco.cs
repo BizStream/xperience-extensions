@@ -4,7 +4,7 @@
     internal class Poco
     {
 
-        internal string TestField { get; set; }
+        internal string? TestField { get; set; }
 
     }
 

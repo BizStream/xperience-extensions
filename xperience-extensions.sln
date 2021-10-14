@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31423.177
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CD5A0FAA-D1C7-4BF6-809D-7F6361DCB657}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{12739BA2-0763-49CA-B409-5D6DF634AD49}"
 EndProject
@@ -23,15 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentico.Xperience.DocumentEngine.Tests", "src\DocumentEngine\test\BizStream.Extensions.Kentico.Xperience.DocumentEngine.Tests.csproj", "{82C61A3D-D740-47B4-9E1D-4B9BA7F8BEB9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Retrievers", "Retrievers", "{2AA05EBA-1F91-4564-A175-C5720D5EA4B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PageRetrievers", "PageRetrievers", "{A3C751BA-6B67-4210-B98D-E0E5E0CE569D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentico.Xperience.Retrievers", "src\Retrievers\src\BizStream.Extensions.Kentico.Xperience.Retrievers.csproj", "{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentico.Xperience.Retrievers.Tests", "src\Retrievers\test\BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.csproj", "{5E737081-AA9A-429A-8199-4B5F7149A111}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StaticWebAssetsStorage", "StaticWebAssetsStorage", "{B8A268E4-45A6-4C6D-96D3-17A2F7492431}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentico.Xperience.StaticWebAssetsStorage", "src\StaticWebAssetsStorage\src\BizStream.Extensions.Kentico.Xperience.StaticWebAssetsStorage.csproj", "{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizStream.Extensions.Kentico.Xperience.PageRetrievers", "src\PageRetrievers\src\BizStream.Extensions.Kentico.Xperience.PageRetrievers.csproj", "{4571575B-64D8-46D3-B7BD-9EE2915BAB36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,42 +113,18 @@ Global
 		{82C61A3D-D740-47B4-9E1D-4B9BA7F8BEB9}.Release|x64.Build.0 = Release|Any CPU
 		{82C61A3D-D740-47B4-9E1D-4B9BA7F8BEB9}.Release|x86.ActiveCfg = Release|Any CPU
 		{82C61A3D-D740-47B4-9E1D-4B9BA7F8BEB9}.Release|x86.Build.0 = Release|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Debug|x64.Build.0 = Debug|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Debug|x86.Build.0 = Debug|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Release|x64.ActiveCfg = Release|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Release|x64.Build.0 = Release|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Release|x86.ActiveCfg = Release|Any CPU
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719}.Release|x86.Build.0 = Release|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Debug|x64.Build.0 = Debug|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Debug|x86.Build.0 = Debug|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Release|x64.ActiveCfg = Release|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Release|x64.Build.0 = Release|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Release|x86.ActiveCfg = Release|Any CPU
-		{5E737081-AA9A-429A-8199-4B5F7149A111}.Release|x86.Build.0 = Release|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Debug|x64.Build.0 = Debug|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Debug|x86.Build.0 = Debug|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|x64.ActiveCfg = Release|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|x64.Build.0 = Release|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|x86.ActiveCfg = Release|Any CPU
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8}.Release|x86.Build.0 = Release|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Debug|x64.Build.0 = Debug|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Debug|x86.Build.0 = Debug|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Release|x64.ActiveCfg = Release|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Release|x64.Build.0 = Release|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Release|x86.ActiveCfg = Release|Any CPU
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,11 +139,8 @@ Global
 		{B1DDDCE6-2537-4D9B-976A-83A74DF31DE9} = {CD5A0FAA-D1C7-4BF6-809D-7F6361DCB657}
 		{EDB1F0F3-C139-4A32-AA02-C5A6D25A60AF} = {B1DDDCE6-2537-4D9B-976A-83A74DF31DE9}
 		{82C61A3D-D740-47B4-9E1D-4B9BA7F8BEB9} = {B1DDDCE6-2537-4D9B-976A-83A74DF31DE9}
-		{2AA05EBA-1F91-4564-A175-C5720D5EA4B4} = {CD5A0FAA-D1C7-4BF6-809D-7F6361DCB657}
-		{DDA7EEC8-3493-48A3-83D8-D1CD3FA7E719} = {2AA05EBA-1F91-4564-A175-C5720D5EA4B4}
-		{5E737081-AA9A-429A-8199-4B5F7149A111} = {2AA05EBA-1F91-4564-A175-C5720D5EA4B4}
-		{B8A268E4-45A6-4C6D-96D3-17A2F7492431} = {CD5A0FAA-D1C7-4BF6-809D-7F6361DCB657}
-		{1E9B0D92-0C0B-4AA6-A5EE-89C47EC501B8} = {B8A268E4-45A6-4C6D-96D3-17A2F7492431}
+		{A3C751BA-6B67-4210-B98D-E0E5E0CE569D} = {CD5A0FAA-D1C7-4BF6-809D-7F6361DCB657}
+		{4571575B-64D8-46D3-B7BD-9EE2915BAB36} = {A3C751BA-6B67-4210-B98D-E0E5E0CE569D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD8C2393-6375-450A-82CD-1BF088A43D3E}
