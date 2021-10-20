@@ -5,14 +5,14 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="BizStream.NET.Sdk" Version="1.0.1" PrivateAssets="all" />
+        <PackageReference Include="BizStream.NET.Sdk" Version="1.1.0" PrivateAssets="all" />
         <PackageReference Include="Kentico.Xperience.Libraries" Version="$(TargetXperienceVersion)" />
         <PackageReference Include="Kentico.Xperience.AspNet.Mvc5" Version="$(TargetXperienceVersion)" Condition=" '$(IncludeXperienceWebReferences)' == 'true' AND '$(TargetFramework)' == 'net48' " />
         <PackageReference Include="Kentico.Xperience.AspNetCore.WebApp" Version="$(TargetXperienceVersion)" Condition=" '$(IncludeXperienceWebReferences)' == 'true' AND '$(TargetFramework)' != 'net48' " />
     </ItemGroup>
 
     <ItemGroup Condition=" '$(IsTestProject)' == 'true' ">
-        <PackageReference Include="BizStream.NET.Tests.Sdk" Version="1.0.2" />
+        <PackageReference Include="BizStream.NET.Tests.Sdk" Version="1.1.0" />
         <PackageReference Include="Kentico.Xperience.Libraries.Tests" Version="$(TargetXperienceVersion)" />
         <PackageReference Include="BizStream.Kentico.Xperience.AspNetCore.Mvc.Testing" Version="1.0.0-beta.deffc23" Condition=" '$(IncludeXperienceWebReferences)' == 'true' AND '$(TargetFramework)' != 'net48'  " />
     </ItemGroup>
