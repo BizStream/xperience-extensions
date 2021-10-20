@@ -1,12 +1,11 @@
 using System;
-using BizStream.Extensions.Kentico.Xperience.Caching;
 using BizStream.Extensions.Kentico.Xperience.Caching.Tests.Models;
 using CMS.Base;
 using CMS.Helpers;
 using CMS.Tests;
 using NUnit.Framework;
 
-namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
+namespace BizStream.Extensions.Kentico.Xperience.Caching.Tests
 {
 
     [TestFixture( Category = "Unit" )]
@@ -17,8 +16,8 @@ namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
         [Test]
         public void OnDocument_ByDocumentID_ShouldConfigureKey( )
         {
-            var documentID = 2;
-            var keys = new CMSCacheDependency()
+            int documentID = 2;
+            string[]? keys = new CMSCacheDependency()
                 .OnDocument( documentID )
                 .CacheKeys;
 
@@ -28,8 +27,8 @@ namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
         [Test]
         public void OnNode_ByNodeID_ShouldConfigureKey( )
         {
-            var nodeID = 2;
-            var keys = new CMSCacheDependency()
+            int nodeID = 2;
+            string[]? keys = new CMSCacheDependency()
                 .OnNode( nodeID )
                 .CacheKeys;
 
@@ -39,10 +38,10 @@ namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
         [Test]
         public void OnNode_ByNodeAliasPath_ShouldConfigureKey( [Values( null, "", "en-US" )] string cultureCode )
         {
-            var siteName = "BizStream.Test";
-            var aliasPath = "/Test";
+            string? siteName = "BizStream.Test";
+            string? aliasPath = "/Test";
 
-            var keys = new CMSCacheDependency()
+            string[]? keys = new CMSCacheDependency()
                 .OnNode( siteName, aliasPath, cultureCode )
                 .CacheKeys;
 
@@ -56,10 +55,10 @@ namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
         [Test]
         public void OnNode_ByNodeGuid_ShouldConfigureKey( )
         {
-            var siteName = "BizStream.Test";
-            var nodeGuid = Guid.NewGuid();
+            string? siteName = "BizStream.Test";
+            Guid nodeGuid = Guid.NewGuid();
 
-            var keys = new CMSCacheDependency()
+            string[]? keys = new CMSCacheDependency()
                 .OnNode( siteName, nodeGuid )
                 .CacheKeys;
 
@@ -69,10 +68,10 @@ namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
         [Test]
         public void OnNodeDescendants_ShouldConfigureKey( )
         {
-            var siteName = "BizStream.Test";
-            var aliasPath = "/Test";
+            string? siteName = "BizStream.Test";
+            string? aliasPath = "/Test";
 
-            var keys = new CMSCacheDependency()
+            string[]? keys = new CMSCacheDependency()
                 .OnNodeDescendants( siteName, aliasPath )
                 .CacheKeys;
 
@@ -82,8 +81,8 @@ namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
         [Test]
         public void OnNodesOfType_ShouldConfigureKey( )
         {
-            var siteName = "BizStream.Test";
-            var keys = new CMSCacheDependency()
+            string? siteName = "BizStream.Test";
+            string[]? keys = new CMSCacheDependency()
                 .OnNodesOfType<TestNode>( siteName )
                 .CacheKeys;
 

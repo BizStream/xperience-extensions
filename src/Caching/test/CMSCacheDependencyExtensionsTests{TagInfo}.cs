@@ -5,7 +5,7 @@ using CMS.Taxonomy;
 using CMS.Tests;
 using NUnit.Framework;
 
-namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
+namespace BizStream.Extensions.Kentico.Xperience.Caching.Tests
 {
 
     [TestFixture( Category = "Unit" )]

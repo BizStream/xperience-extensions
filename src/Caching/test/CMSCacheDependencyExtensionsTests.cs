@@ -1,10 +1,9 @@
-using BizStream.Extensions.Kentico.Xperience.Caching;
 using CMS.Helpers;
 using CMS.Membership;
 using CMS.Tests;
 using NUnit.Framework;
 
-namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
+namespace BizStream.Extensions.Kentico.Xperience.Caching.Tests
 {
 
     [TestFixture( Category = "Unit" )]
@@ -15,8 +14,8 @@ namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
         [Test]
         public void OnObject_ByCodeName_ShouldConfigureKey( )
         {
-            var codeName = "administrator";
-            var keys = new CMSCacheDependency()
+            string? codeName = "administrator";
+            string[]? keys = new CMSCacheDependency()
                 .OnObject<UserInfo>( codeName )
                 .CacheKeys;
 
@@ -26,7 +25,7 @@ namespace BizStream.Extensions.Kentico.Xperience.Retrievers.Tests.CustomTables
         [Test]
         public void OnObjectsOfType_ShouldConfigureKey( )
         {
-            var keys = new CMSCacheDependency()
+            string[]? keys = new CMSCacheDependency()
                 .OnObjectsOfType<UserInfo>()
                 .CacheKeys;
 
